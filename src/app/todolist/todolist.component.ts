@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../todo.service';
 
 @Component({
   selector: 'app-todolist',
@@ -7,15 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodolistComponent implements OnInit {
 
-  employeeDetails=[
-    {id:1,name:'A',department:'CSE'},
-    {id:2,name:'B',department:'ECE'},
-    {id:3,name:'C',department:'IT'}
-    ]
+  employeeDetailsName
 
-  constructor() { }
+  constructor(private employeeList: EmployeeService) { }
 
   ngOnInit(): void {
+
+    this.employeeDetailsName=this.employeeList.employeeDetails
   }
 
 }

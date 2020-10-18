@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../todo.service';
 
 @Component({
   selector: 'app-tododetails',
@@ -7,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TododetailsComponent implements OnInit {
 
-  employeeDetails=[
-    {id:1,name:'A',department:'CSE'},
-    {id:2,name:'B',department:'ECE'},
-    {id:3,name:'C',department:'IT'}
-    ]
+  employeeDetails
 
-  constructor() { }
+  constructor(private empServ:EmployeeService) { }
 
   ngOnInit(): void {
-  }
 
+    this.employeeDetails=this.empServ.employeeDetails
+  }
+  deleteEmployee(){
+    this.empServ.deleteEmployee(this.employeeDetails.id);
+  }
 }
